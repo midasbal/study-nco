@@ -171,8 +171,7 @@
   </footer>
 
   <script>
- // Quiz data
-// === Inco Quiz Data ===
+ 
 const questions = [
   {
     question: "What best describes Inco?",
@@ -407,19 +406,19 @@ const questions = [
 ];
 
 
-// State
+
 let currentQuestion = 0;
 let correctCount = 0;
 let wrongCount = 0;
 
-// Elements
+
 const questionTitle = document.querySelector('.quiz-container h2');
 const optionsList = document.querySelector('.options');
 const hintText = document.getElementById('hint-text');
 const feedback = document.getElementById('answer-feedback');
 const hintBox = document.querySelector('.hint-box');
 
-// Create Hint button (if not already created)
+
 let hintButton = hintBox.querySelector('button.show-hint');
 if (!hintButton) {
   hintButton = document.createElement('button');
@@ -436,7 +435,7 @@ if (!hintButton) {
   hintBox.appendChild(hintButton);
 }
 
-// Create Next button (placed under feedback inside quiz container)
+
 let nextButton = document.querySelector('.quiz-container button.next');
 if (!nextButton) {
   nextButton = document.createElement('button');
@@ -450,11 +449,11 @@ if (!nextButton) {
   nextButton.style.color = "white";
   nextButton.style.cursor = "pointer";
   nextButton.style.fontWeight = "600";
-  nextButton.style.display = "none"; // başta gizli
+  nextButton.style.display = "none"; 
   document.querySelector('.quiz-container').appendChild(nextButton);
 }
 
-// Load a question into DOM
+
 function loadQuestion() {
   const q = questions[currentQuestion];
   questionTitle.textContent = q.question;
@@ -464,16 +463,16 @@ function loadQuestion() {
   hintButton.style.display = "inline-block";
   nextButton.style.display = "none";
 
-  // Şıkları karıştır (shuffle)
+  
   const shuffled = q.options
     .map((opt, index) => ({ opt, index }))
     .sort(() => Math.random() - 0.5);
 
-  // Yeni doğru index'i bul
+ 
   const newCorrectIndex = shuffled.findIndex(item => item.index === q.correct);
   q.correct = newCorrectIndex;
 
-  // Populate shuffled options
+  
   shuffled.forEach((item, index) => {
     const li = document.createElement("li");
     li.textContent = item.opt;
@@ -486,12 +485,12 @@ function loadQuestion() {
   });
 }
 
-// Handle option click
+
 function handleOptionClick(li) {
   const q = questions[currentQuestion];
   const isCorrect = li.dataset.correct === "true";
 
-  // prevent double clicks if already answered
+  
   const alreadyAnswered = optionsList.querySelector('.correct, .wrong');
   if (alreadyAnswered) return;
 
@@ -500,12 +499,12 @@ function handleOptionClick(li) {
     feedback.textContent = "✅ Correct!";
     feedback.style.color = "green";
     correctCount++;
-    // enable Next button so user can move on when ready
+    
     nextButton.style.display = "inline-block";
   } else {
     li.classList.add('wrong');
     wrongCount++;
-    // Show which option was correct
+    
     const allOptions = optionsList.querySelectorAll('li');
     const correctLi = Array.from(allOptions).find(o => o.dataset.correct === "true");
     if (correctLi) {
@@ -515,32 +514,32 @@ function handleOptionClick(li) {
 <span class="explain">Explanation: ${q.explanation || q.hint || ''}</span>`;
 feedback.style.color = "red";
     feedback.style.color = "red";
-    // allow user to read then click Next
+    
     nextButton.style.display = "inline-block";
   }
 
-  // disable pointer events on options (prevent changing answer)
+  
   optionsList.querySelectorAll('li').forEach(o => o.style.pointerEvents = 'none');
 }
 
-// Hint button behavior (shows current question hint)
+
 hintButton.addEventListener('click', () => {
   const q = questions[currentQuestion];
   hintText.textContent = q.hint;
 });
 
-// Next button behavior
+
 nextButton.addEventListener('click', () => {
   if (currentQuestion < questions.length - 1) {
     currentQuestion++;
     loadQuestion();
   } else {
-    // Quiz bitti — gösterim
+    
     showSummary();
   }
 });
 
-// Show final summary
+
 function showSummary() {
   const container = document.querySelector('.quiz-container');
   const scorePercent = Math.round((correctCount / questions.length) * 100);
@@ -567,24 +566,24 @@ function showSummary() {
   imgPaths.forEach(src => {
     const img = document.createElement('img');
     img.src = src;
-    img.style.width = "32%"; // 3 yan yana sığacak şekilde
+    img.style.width = "32%"; 
     img.style.borderRadius = "12px";
     imgContainer.appendChild(img);
   });
 
-  // restart handler
+  
   container.querySelector('button.restart').addEventListener('click', () => {
     currentQuestion = 0;
     correctCount = 0;
     wrongCount = 0;
-    location.reload(); // Fotoğraflar ve skor kaybolur, quiz resetlenir
+    location.reload(); 
   });
 
-  // hide hint box
+  
   hintBox.style.display = 'none';
 }
 
-// initial load
+
 loadQuestion();
   </script>
 </body>

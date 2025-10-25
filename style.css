@@ -1,4 +1,4 @@
-/* Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -84,7 +84,7 @@ header {
   border-color: #3673F5;
 }
 
-/* Main content */
+
 main {
   flex: 1;
   display: flex;
@@ -186,7 +186,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 700; /* Kalın yazı */
+  font-weight: 700; 
   margin-top: 50px;
 }
 
@@ -233,7 +233,7 @@ main.learn {
   text-transform: uppercase;
 }
 
-/* Sidebar list items */
+
 .sidebar ul {
   list-style: none;
   padding-left: 0;
@@ -242,7 +242,7 @@ main.learn {
   letter-spacing: 0.3px;
 }
 
-/* Each section visually separated */
+
 .sidebar li {
   margin-bottom: 1rem;
   border-left: 3px solid transparent;
@@ -250,7 +250,7 @@ main.learn {
   transition: all 0.3s ease;
 }
 
-/* Hover effect */
+
 .sidebar li a {
   text-decoration: none;
   color: #1a1a1a;
@@ -260,11 +260,11 @@ main.learn {
 
 .sidebar li a:hover {
   color: #3673F5;
-  border-left: 3px solid #3673F5; /* sol kenarda hover efekti */
+  border-left: 3px solid #3673F5; 
   padding-left: 0.5rem;
 }
 
-/* Optional: small gap between groups for visual separation */
+
 .sidebar li + li {
   margin-top: 0.5rem;
 }
@@ -275,14 +275,14 @@ main.learn {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(54, 115, 245, 0.08);
-  border-left: 4px solid #3673F5; /* subtle sol border vurgusu */
+  border-left: 4px solid #3673F5; 
   scroll-margin-top: 160px;
 }
 
 
 .section p, .section ul li {
   font-family: 'Poppins', sans-serif;
-  font-weight: 600; /* daha kalın */
+  font-weight: 600; 
   font-size: 1.05rem;
   line-height: 1.7;
   color: #1a1a1a;
@@ -305,7 +305,7 @@ main.learn {
   margin-bottom: 1rem;
 }
 
-/* Listeleri düzenleme */
+
 .section ul {
   padding-left: 1.2rem; 
   list-style-position: inside; 
@@ -327,7 +327,7 @@ main.learn {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center; /* ortaya hizalar */
+  justify-content: center; 
 }
 
 .section-images img {
