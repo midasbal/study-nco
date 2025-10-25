@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study’nco - Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+ .video-section {
+  margin-top: 2rem;
+}
+
+.video-section video {
+  width: 100%;
+  max-width: 400px; 
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+    
+
+    main.quiz {
+      display: flex;
+      flex: 1;
+      padding: 2rem;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .quiz-container {
+      background: #f8f9ff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(54, 115, 245, 0.1);
+      width: 60%;
+    }
+
+    .quiz-container h2 {
+      color: #3673F5;
+      margin-bottom: 1rem;
+    }
+
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+
+    .options li {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+
+    .options li:hover {
+      border-color: #3673F5;
+      background: #eaf0ff;
+    }
+
+    .options li.correct {
+      background: #d4f0d4;
+      border-color: #3673F5;
+    }
+
+    .options li.wrong {
+      background: #ffd6d6;
+      border-color: #3673F5;
+    }
+
+    .hint-box {
+      width: 30%;
+      background: #f0f5ff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(54, 115, 245, 0.1);
+      position: sticky;
+      top: 140px;
+    }
+
+    .hint-box h3 {
+      color: #3673F5;
+      margin-bottom: 1rem;
+    }
+
+    @media(max-width: 900px){
+      main.quiz {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .quiz-container, .hint-box {
+        width: 90%;
+      }
+
+      .hint-box {
+        position: relative;
+        top: 0;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="media/logoo.png" alt="Logo">
+    </div>
+    <div class="site-title">
+      <img src="media/inco1.png" alt="Left Icon" class="inco-img">
+      <img src="media/inco2.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco3.png" alt="Left Icon" class="inco-img">
+      <img src="media/inco4.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco5.png" alt="Left Icon" class="inco-img">
+      <img src="media/inco6.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco7.png" alt="Left Icon" class="inco-img">
+      <img src="media/inco8.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco9.png" alt="Left Icon" class="inco-img">
+    </div>
+
+ <nav class="nav-links">
+  <a href="index.html">Home</a>
+  <a href="learn.html">Learn</a>
+  <a href="important.html">Important</a>
+</nav>
+
+  </header>
+
+  <main class="quiz">
+    <div class="quiz-container">
+      <h2>What is the main purpose of Inco Lightning?</h2>
+      <ul class="options">
+        <li data-correct="false" data-hint="Lightning is TEE-based and optimized for fast operations.">It provides total privacy using advanced math.</li>
+        <li data-correct="true" data-hint="Correct! Lightning is TEE-based for low-latency apps.">Fast secret-keeper using secure hardware (TEE).</li>
+        <li data-correct="false" data-hint="Atlas uses FHE + MPC, not Lightning.">Enables fully homomorphic computations on encrypted data.</li>
+        <li data-correct="false" data-hint="Lightning is focused on latency, not auditability.">Provides cryptographic auditability for all users.</li>
+      </ul>
+      <p id="answer-feedback" style="margin-top: 1rem; font-weight: bold;"></p>
+    </div>
+
+    <div class="hint-box">
+  <h3>Hint</h3>
+  <p id="hint-text">Click a button to see a hint.</p>
+
+  <div class="video-section">
+    <video src="media/focuss.mp4" controls loop muted autoplay></video>
+  </div>
+</div>
+  </main>
+
+  <footer>
+    <p>
+      midas - made with love 💙 | you can reach me here 
+      <a href="https://twitter.com/wjmdiary" target="_blank">
+        <img src="media/x-logo.png" alt="X Logo" height="30">
+      </a>
+    </p>
+  </footer>
+
+  <script>
+ // Quiz data
+// === Inco Quiz Data ===
+const questions = [
+  {
+    question: "What best describes Inco?",
+    options: [
+      "A brand-new blockchain protocol competing with Ethereum",
+      "A confidentiality layer that integrates with existing blockchains",
+      "A wallet-only product that stores private keys for users",
+      "A consensus algorithm for permissioned ledgers"
+    ],
+    correct: 1,
+    hint: "It adds privacy on top of chains, it’s not a new chain.",
+    explanation: "Inco is designed as a modular confidentiality/encryption layer that works with existing blockchains (e.g., Ethereum, Base). It is not a new chain, wallet, or consensus algorithm."
+  },
+  {
+    question: "Which pair are Inco’s two main products?",
+    options: ["Lightning and Thunder", "Lightning and Atlas", "Atlas and Nimbus", "Shield and Atlas"],
+    correct: 1,
+    hint: "One uses TEEs, the other uses FHE/MPC.",
+    explanation: "Inco’s products are Lightning (TEE-based) and Atlas (FHE/MPC-based)."
+  },
+  {
+    question: "Which statement is true about Inco Lightning?",
+    options: [
+      "It relies on Fully Homomorphic Encryption for compute",
+      "It uses Trusted Execution Environments (TEEs) to enable low-latency confidential compute",
+      "It eliminates the need to trust any hardware vendor",
+      "It’s optimized for batch offline analytics, not real-time apps"
+    ],
+    correct: 1,
+    hint: "Lightning emphasizes speed and hardware enclaves.",
+    explanation: "Lightning is TEE-based and optimized for low-latency real-time use cases like gaming."
+  },
+  {
+    question: "Which is a core advantage of Inco Atlas?",
+    options: [
+      "It is guaranteed to be faster than TEEs",
+      "It enables computation directly on ciphertexts using FHE and MPC techniques",
+      "It requires trusting a single hardware vendor’s attestation chain",
+      "It is limited to simple addition on encrypted values only"
+    ],
+    correct: 1,
+    hint: "Think: compute while data remains encrypted.",
+    explanation: "Atlas focuses on FHE/MPC to compute directly on encrypted data without decryption."
+  },
+  {
+    question: "Which concise kid-friendly line matches FHE?",
+    options: [
+      "A locked room inside a CPU",
+      "Magic math that lets you do calculations on locked boxes without opening them",
+      "Friends compute together without anyone seeing all the secrets",
+      "Prove you did something without showing how"
+    ],
+    correct: 1,
+    hint: "“Locked boxes” metaphor.",
+    explanation: "FHE performs computation on ciphertexts without decryption."
+  },
+  {
+    question: "Which of the following is a correct trade-off for TEEs?",
+    options: [
+      "Very low latency but requires trust in hardware vendors and has side-channel risk",
+      "Post-quantum secure by default and extremely cheap to run",
+      "No need for attestation or vendor trust",
+      "Designed primarily for long-running, heavy cryptographic analytics at low cost"
+    ],
+    correct: 0,
+    hint: "TEEs are hardware enclaves — fast, but have vendor trust considerations.",
+    explanation: "TEEs provide fast compute but rely on vendor trust and can face side-channel risks."
+  },
+  {
+    question: "Which pattern is central to cERC20 design?",
+    options: [
+      "Publishing cleartext balances to enable fast indexing",
+      "Selective disclosure: encrypted balances with permissioned viewer keys for audits",
+      "Removing mint and burn functionality to maximize privacy",
+      "Replacing ERC20 ABI so composability is lost"
+    ],
+    correct: 1,
+    hint: "Think: keep ERC20 semantics but hide amounts.",
+    explanation: "cERC20 keeps ERC20-like semantics with encrypted balances and selective disclosure."
+  },
+  {
+    question: "For developers starting with Inco, which statement is true?",
+    options: [
+      "You must use a proprietary Inco wallet instead of MetaMask",
+      "You can continue using Solidity, Hardhat, and MetaMask while integrating the Inco SDK",
+      "Inco requires rewriting smart contracts in a new language",
+      "Testing locally with Hardhat is impossible when using Inco primitives"
+    ],
+    correct: 1,
+    hint: "Inco aims for minimal friction with existing EVM toolchains.",
+    explanation: "Inco integrates smoothly into the standard EVM stack: Solidity, Hardhat, and MetaMask."
+  },
+  {
+    question: "Which threat is especially relevant to TEEs?",
+    options: [
+      "Lattice-based cryptanalysis",
+      "Side-channel attacks on hardware enclaves",
+      "Collusion among many independent MPC parties",
+      "ZKP prover bugs only"
+    ],
+    correct: 1,
+    hint: "TEEs are hardware pieces — think physical attack surfaces.",
+    explanation: "TEEs are vulnerable to side-channel attacks on hardware enclaves."
+  },
+  {
+    question: "How does Inco suggest establishing confidence that confidential compute was performed correctly?",
+    options: [
+      "Rely only on vendor claims without extra proofs",
+      "Use a combination of attestation and succinct proofs such as ZK proofs where appropriate",
+      "Publish all plaintext results to the public ledger for verification",
+      "Avoid any verification and rely on off-chain trust entirely"
+    ],
+    correct: 1,
+    hint: "Think layered verification combining hardware attestation and cryptographic proofs.",
+    explanation: "Inco combines hardware attestation with cryptographic ZK proofs for verification."
+  },
+  {
+    question: "Which use case most strongly suggests choosing Lightning over Atlas?",
+    options: [
+      "Batch analytics on entire encrypted datasets where latency is not critical",
+      "Real-time multiplayer gaming with confidential state (low latency)",
+      "Post-quantum-resistant large-scale statistical analysis",
+      "Off-chain multiparty cryptographic computation with strict collusion resistance"
+    ],
+    correct: 1,
+    hint: "Lightning is TEE-based and low-latency.",
+    explanation: "Lightning’s TEE approach suits real-time low-latency use cases like gaming."
+  },
+  {
+    question: "Which statement correctly contrasts TEE and FHE on quantum resistance?",
+    options: [
+      "TEEs are lattice-based and therefore post-quantum resistant by default",
+      "FHE (lattice-based constructions) tends to be more future-proof against quantum attacks than TEEs",
+      "Both TEEs and FHE provide identical quantum protection",
+      "Neither TEE nor FHE has any relevance to quantum considerations"
+    ],
+    correct: 1,
+    hint: "Think cryptography vs hardware.",
+    explanation: "FHE’s lattice-based math offers more quantum resistance than hardware-based TEEs."
+  },
+  {
+    question: "In the “four levels of blockchain privacy” taxonomy, which level is Inco primarily targeting?",
+    options: [
+      "Transparency — everyone sees everything",
+      "Anonymity — amounts visible, identities hidden",
+      "Confidentiality — identities visible, amounts hidden",
+      "Total privacy — nothing visible"
+    ],
+    correct: 2,
+    hint: "Inco focuses on hiding amounts while preserving composability.",
+    explanation: "Inco focuses on confidentiality: hiding amounts while keeping composability."
+  },
+  {
+    question: "Which of these is NOT a recommended developer practice with Inco?",
+    options: [
+      "Keep public settlement logic on-chain and confidential business logic modular/offloaded",
+      "Grant broad, permanent decryption rights to many unvetted parties for convenience",
+      "Use selective disclosure and role-based viewer keys for audits",
+      "Measure latency and costs, and iterate on TEE/FHE hybrid choices"
+    ],
+    correct: 1,
+    hint: "Security and least privilege matter.",
+    explanation: "Granting broad decryption rights is insecure; Inco promotes least-privilege design."
+  },
+  {
+    question: "Which description best matches cERC20 token behavior?",
+    options: [
+      "Token contract stores raw balances on-chain as plaintext but encrypts transfers off-chain",
+      "Token preserves ERC20-like semantics while storing amounts as ciphertexts and supporting permissioned viewing",
+      "Token removes transfer functionality to prevent leakage",
+      "Token only works on non-EVM chains"
+    ],
+    correct: 1,
+    hint: "cERC20 is meant to remain ERC20-compatible while hiding amounts.",
+    explanation: "cERC20 maintains ERC20 functionality but encrypts balances and enables selective viewing."
+  },
+  {
+    question: "Which axis would you expect to be highest for TEE on a risk-vs-reward radar?",
+    options: ["Quantum Resistance", "Speed", "Trust Assumptions (lowest)", "Cost (very high)"],
+    correct: 1,
+    hint: "TEEs are fast and typically lower compute cost today.",
+    explanation: "TEEs excel in speed, not quantum resistance or low trust assumptions."
+  },
+  {
+    question: "Which of these is an accurate short comparison statement?",
+    options: [
+      "TEEs = slow, trust math; FHE = fast, trust hardware",
+      "TEEs = fast, trust hardware; FHE = cryptographically private, higher compute cost",
+      "TEEs and FHE are interchangeable with identical trade-offs",
+      "FHE always replaces the need for ZK proofs or attestations"
+    ],
+    correct: 1,
+    hint: "Think of speed, trust model, and compute cost.",
+    explanation: "TEEs are fast and rely on hardware trust; FHE is slower but provides stronger privacy."
+  },
+  {
+    question: "A builder wants regulator-auditable confidential payroll. Which approach is most practical initially?",
+    options: [
+      "Full public ledger with plaintext salaries published",
+      "Use Lightning (TEE) for low-latency confidential transfers + selective disclosure for auditors",
+      "Use only FHE for everything and ignore attestation or viewer roles",
+      "Remove all auditing capabilities to maximize privacy"
+    ],
+    correct: 1,
+    hint: "Payroll needs both low latency and auditable selective disclosure.",
+    explanation: "Lightning + selective disclosure provides privacy and auditability."
+  },
+  {
+    question: "Which glossary mapping is correct?",
+    options: [
+      "TEE = magic math that works on locked boxes",
+      "ZKP = show you're telling the truth without showing secret details",
+      "cERC20 = a wallet application for ERC20 tokens",
+      "MPC = a single server performing all computation"
+    ],
+    correct: 1,
+    hint: "Use the simple definitions from the glossary.",
+    explanation: "ZKP means proving truth without revealing secrets."
+  },
+  {
+    question: "Which is the best short starter checklist step to prototype a confidential field in an existing dApp?",
+    options: [
+      "Rewrite the whole dApp in a new language and chain",
+      "Pick the privacy-critical field, keep the rest public, integrate Inco encrypted types for that field, and test locally with Hardhat + Inco harness",
+      "Expose all private fields to a trusted third party for manual processing",
+      "Disable composability to avoid integration work"
+    ],
+    correct: 1,
+    hint: "Think small, iterative, maintain composability.",
+    explanation: "Start small: one confidential field, integrate Inco types, and test locally."
+  }
+];
+
+
+// State
+let currentQuestion = 0;
+let correctCount = 0;
+let wrongCount = 0;
+
+// Elements
+const questionTitle = document.querySelector('.quiz-container h2');
+const optionsList = document.querySelector('.options');
+const hintText = document.getElementById('hint-text');
+const feedback = document.getElementById('answer-feedback');
+const hintBox = document.querySelector('.hint-box');
+
+// Create Hint button (if not already created)
+let hintButton = hintBox.querySelector('button.show-hint');
+if (!hintButton) {
+  hintButton = document.createElement('button');
+  hintButton.className = 'show-hint';
+  hintButton.textContent = "Show Hint 💡";
+  hintButton.style.marginTop = "10px";
+  hintButton.style.padding = "8px 12px";
+  hintButton.style.border = "none";
+  hintButton.style.borderRadius = "8px";
+  hintButton.style.background = "#3673F5";
+  hintButton.style.color = "white";
+  hintButton.style.cursor = "pointer";
+  hintButton.style.fontWeight = "500";
+  hintBox.appendChild(hintButton);
+}
+
+// Create Next button (placed under feedback inside quiz container)
+let nextButton = document.querySelector('.quiz-container button.next');
+if (!nextButton) {
+  nextButton = document.createElement('button');
+  nextButton.className = 'next';
+  nextButton.textContent = "Next ➜";
+  nextButton.style.marginTop = "12px";
+  nextButton.style.padding = "8px 14px";
+  nextButton.style.border = "none";
+  nextButton.style.borderRadius = "8px";
+  nextButton.style.background = "#3673F5";
+  nextButton.style.color = "white";
+  nextButton.style.cursor = "pointer";
+  nextButton.style.fontWeight = "600";
+  nextButton.style.display = "none"; // başta gizli
+  document.querySelector('.quiz-container').appendChild(nextButton);
+}
+
+// Load a question into DOM
+function loadQuestion() {
+  const q = questions[currentQuestion];
+  questionTitle.textContent = q.question;
+  optionsList.innerHTML = "";
+  feedback.textContent = "";
+  hintText.textContent = "Click a button to see a hint.";
+  hintButton.style.display = "inline-block";
+  nextButton.style.display = "none";
+
+  // Şıkları karıştır (shuffle)
+  const shuffled = q.options
+    .map((opt, index) => ({ opt, index }))
+    .sort(() => Math.random() - 0.5);
+
+  // Yeni doğru index'i bul
+  const newCorrectIndex = shuffled.findIndex(item => item.index === q.correct);
+  q.correct = newCorrectIndex;
+
+  // Populate shuffled options
+  shuffled.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.textContent = item.opt;
+    li.dataset.index = index;
+    li.dataset.correct = (index === q.correct) ? "true" : "false";
+    li.style.pointerEvents = "auto";
+    li.classList.remove("correct", "wrong");
+    li.addEventListener("click", () => handleOptionClick(li));
+    optionsList.appendChild(li);
+  });
+}
+
+// Handle option click
+function handleOptionClick(li) {
+  const q = questions[currentQuestion];
+  const isCorrect = li.dataset.correct === "true";
+
+  // prevent double clicks if already answered
+  const alreadyAnswered = optionsList.querySelector('.correct, .wrong');
+  if (alreadyAnswered) return;
+
+  if (isCorrect) {
+    li.classList.add('correct');
+    feedback.textContent = "✅ Correct!";
+    feedback.style.color = "green";
+    correctCount++;
+    // enable Next button so user can move on when ready
+    nextButton.style.display = "inline-block";
+  } else {
+    li.classList.add('wrong');
+    wrongCount++;
+    // Show which option was correct
+    const allOptions = optionsList.querySelectorAll('li');
+    const correctLi = Array.from(allOptions).find(o => o.dataset.correct === "true");
+    if (correctLi) {
+      correctLi.classList.add('correct');
+    }
+    feedback.innerHTML = `❌ Wrong! Correct answer: "<strong>${q.options[q.correct]}</strong>".<br>
+<span class="explain">Explanation: ${q.explanation || q.hint || ''}</span>`;
+feedback.style.color = "red";
+    feedback.style.color = "red";
+    // allow user to read then click Next
+    nextButton.style.display = "inline-block";
+  }
+
+  // disable pointer events on options (prevent changing answer)
+  optionsList.querySelectorAll('li').forEach(o => o.style.pointerEvents = 'none');
+}
+
+// Hint button behavior (shows current question hint)
+hintButton.addEventListener('click', () => {
+  const q = questions[currentQuestion];
+  hintText.textContent = q.hint;
+});
+
+// Next button behavior
+nextButton.addEventListener('click', () => {
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion();
+  } else {
+    // Quiz bitti — gösterim
+    showSummary();
+  }
+});
+
+// Show final summary
+function showSummary() {
+  const container = document.querySelector('.quiz-container');
+  const scorePercent = Math.round((correctCount / questions.length) * 100);
+
+  container.innerHTML = `
+    <h2>Quiz Complete 🎉</h2>
+    <p style="font-weight:600; margin-top: 8px;">Results: ${correctCount} correct, ${wrongCount} wrong out of ${questions.length} questions.</p>
+    <p style="margin-top:6px;">Score: ${scorePercent}%</p>
+    <div style="margin-top:16px;">
+      <button class="restart" style="padding:10px 14px;border:none;border-radius:8px;background:#3673F5;color:#fff;cursor:pointer;font-weight:600;">Restart Quiz</button>
+    </div>
+    <div id="score-images" style="display:flex; gap:8px; margin-top:16px;"></div>
+  `;
+
+  const imgContainer = document.getElementById('score-images');
+  let imgPaths = [];
+
+  if(scorePercent >= 80){
+    imgPaths = ["media/congrats1.jpg", "media/congrats2.jpg", "media/congrats3.jpg"];
+  } else {
+    imgPaths = ["media/tryagain1.jpg", "media/tryagain2.jpg", "media/tryagain3.jpg"];
+  }
+
+  imgPaths.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.width = "32%"; // 3 yan yana sığacak şekilde
+    img.style.borderRadius = "12px";
+    imgContainer.appendChild(img);
+  });
+
+  // restart handler
+  container.querySelector('button.restart').addEventListener('click', () => {
+    currentQuestion = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    location.reload(); // Fotoğraflar ve skor kaybolur, quiz resetlenir
+  });
+
+  // hide hint box
+  hintBox.style.display = 'none';
+}
+
+// initial load
+loadQuestion();
+  </script>
+</body>
+</html>
