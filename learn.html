@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study’nco - Learn</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main.learn {
+      display: flex;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    
+    .sidebar {
+  position: sticky;
+  top: 140px; 
+  align-self: flex-start; 
+  width: 250px;
+  background-color: #f0f5ff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(54, 115, 245, 0.1);
+  max-height: calc(100vh - 160px); 
+  overflow-y: auto; 
+}
+
+    .sidebar h3 {
+      margin-bottom: 1rem;
+      color: #3673F5;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 0.8rem;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      color: #3673F5;
+    }
+
+   
+    .content {
+      flex: 1;
+      padding-left: 1rem;
+    }
+
+     .section {
+      margin-bottom: 3rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(54, 115, 245, 0.05);
+    }
+
+     .section h2 {
+      color: #3673F5;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+     .section p, .section ul {
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    
+   @media (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    top: 0;
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 2rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="media/logoo.png" alt="Logo">
+    </div>
+    <div class="site-title">
+      <img src="media/inco1.png" alt="Left Icon" class="inco-img">
+      <img src="media/inco2.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco3.png" alt="Left Icon" class="inco-img">
+      <img src="media/inco4.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco5.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco6.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco7.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco8.png" alt="Right Icon" class="inco-img">
+      <img src="media/inco9.png" alt="Right Icon" class="inco-img">
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="important.html">Important</a>
+    </nav>
+  </header>
+
+  <main class="learn">
+    
+    <div class="sidebar">
+      <h3>Sections</h3>
+      <ul>
+        <li><a href="#introduction">Introduction - What is Inco?</a></li>
+        <li><a href="#products">Products - Inco Lightning vs Inco Atlas</a></li>
+        <li><a href="#how-it-works">How it works - TEEs, FHE, MPC, ZKPs</a></li>
+        <li><a href="#confidential-tokens">Confidential Tokens (cERC20) & encrypted ERC patterns</a></li>
+        <li><a href="#developer-experience">Developer experience & getting started</a></li>
+        <li><a href="#security">Security, limitations & verification model</a></li>
+        <li><a href="#use-cases">Use cases</a></li>
+        <li><a href="#privacy-levels">Four levels of blockchain privacy</a></li>
+        <li><a href="#comparison">Comparison table: TEE vs FHE</a></li>
+        <li><a href="#practical-guide">Practical guide for builders</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+      </ul>
+    </div>
+
+    
+    <div class="content">
+      
+      <div class="section" id="introduction">
+        <h2>Introduction - What is Inco?</h2>
+        <p class="highlight-text">Inco is not a new blockchain. Think of it like a secret envelope you put on top of existing blockchains so important details (like money amounts or private cards) stay hidden — but everyone still sees the envelope exists.</p>
+        <ul>
+          <li>Not a chain: integrates with existing blockchains (e.g., Ethereum, Base).</li>
+          <li>Goal: add confidentiality (privacy) without breaking composability.</li>
+          <li>Two main products: Lightning (TEE-based) and Atlas (FHE/MPC-based).</li>
+          <li>For builders (details):
+            <ul>
+              <li>Inco is a modular confidentiality layer (an “encryption stack”) you opt into.</li>
+              <li>Design philosophy: same dev tools and languages (Solidity, Hardhat, MetaMask) — minimal friction.</li>
+              <li>Current status: Inco Lightning beta on Base Sepolia testnet; Atlas forthcoming.</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph1.png" alt="Graph 1">
+  </div>
+      </div>
+
+      
+      <div class="section" id="products">
+        <h2>Products - Inco Lightning vs Inco Atlas</h2>
+        <p class="highlight-text">Lightning = fast secret-keeper using secure hardware. Atlas = secret-keeper using powerful math that can compute while things stay encrypted.</p>
+        <ul>
+          <li>Lightning: uses TEEs (secure hardware enclaves), low latency, great for real-time apps.</li>
+          <li>Atlas: uses FHE + MPC, computes on encrypted data, stronger theoretical privacy, higher compute cost today.</li>
+          <li>Lightning use-cases: gaming, high-frequency DeFi, confidential transfers where latency matters.</li>
+          <li>Atlas use-cases: use where cryptographic auditability, post-quantum resistance, or no trusted hardware is preferred.</li>
+          <li>Mixing strategies: Inco combines TEE, FHE, MPC, and ZKPs where appropriate to trade off speed, trust assumptions, and verifiability.</li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph2.png" alt="Graph 2">
+  </div>
+      </div>
+
+      
+      <div class="section" id="how-it-works">
+        <h2>How it works - TEEs, FHE, MPC, ZKPs</h2>
+        <p class="highlight-text">This section gives a super-simple snapshot of the main privacy-building blocks Inco uses, then the quick practical trade-offs you’ll care about as a builder (speed, trust, cost, verifiability).</p>
+        <ul>
+          <li>TEE: a tiny super-safe room inside a computer where secrets can be used safely.</li>
+          <li>FHE: magic math that lets you do calculations on locked boxes without opening them.</li>
+          <li>MPC: friends compute together without any single friend seeing everyone’s secret.</li>
+          <li>ZKP: prove you did something right without showing how.</li>
+          <li>TEEs: rely on hardware attestation (Intel SGX, ARM TrustZone); provide fast, verifiable compute but require trust in hardware vendor and mitigation of side-channels.</li>
+          <li>FHE: operates on ciphertexts, enables universal encrypted computation; currently slower but improving with batching, packing, and hardware acceleration.</li>
+          <li>MPC: distributes trust; good for decentralization but needs careful anti-collusion design and sometimes higher latency.</li>
+          <li>ZKPs: can complement FHE/TEE by adding succinct verifiability.</li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph3.png" alt="Graph 3">
+  </div>
+      </div>
+
+      
+      <div class="section" id="confidential-tokens">
+        <h2>Confidential Tokens & cERC20</h2>
+        <p class="highlight-text">cERC20 extends the familiar ERC20 idea so token amounts and balances stay secret while token behavior (mint, transfer, burn) still works, plus you can give auditors or regulators permissioned access when needed.</p>
+        <ul>
+          <li>Keeps balances & transfers encrypted while preserving ERC20-like operations.</li>
+          <li>Permissions: deployer/authorized viewers can be granted viewing rights for audits or compliance.</li>
+          <li>Developed in collaboration with Circle Research for confidential token frameworks.</li>
+          <li>cERC20 supports mint, burn, transfer semantics but stores amounts encrypted.</li>
+          <li>Design patterns: selective disclosure (grant view keys), operator/viewer roles, audit hooks for regulators.</li>
+          <li>Engineering notes: integrate Inco SDK/library in smart contracts; on-chain state holds ciphertexts and proofs/attestations.</li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph4.png" alt="Graph 4">
+  </div>
+      </div>
+
+      
+      <div class="section" id="developer-experience">
+        <h2>Developer experience & getting started</h2>
+        <p class="highlight-text">Inco aims to feel familiar. Use the same EVM toolchain and wallets you already know, then drop in Inco’s encrypted types and SDK to add confidentiality.</p>
+        <ul>
+          <li>Languages: Solidity and familiar EVM toolchain supported.</li>
+          <li>Testnet: Base Sepolia (Inco Lightning beta).</li>
+          <li>No new wallet: use the same wallets (MetaMask) and dev tools (Remix, Hardhat).</li>
+          <li>Install Inco Solidity library / SDK and follow local dev flow: write contract → use Inco encrypted types → compile & test.</li>
+          <li>Debugging: test flows on Base Sepolia testnet; use tooling to view authorized decryptions/attestations.</li>
+          <li>Recommended patterns: keep business logic modular (public onchain vs confidential offchain/TEE), limit trusted roles, add audit hooks.</li>
+          <li>Example starter projects: confidential payroll, onchain poker, cERC20 token demo.</li>
+        </ul>
+      </div>
+
+      
+      <div class="section" id="security">
+        <h2>Security, limitations & verification model</h2>
+        <p class="highlight-text">Every privacy technique has trade-offs. This section summarizes main threats and practical mitigations so you can design the right trust/economics for your app.</p>
+        <ul>
+          <li>TEEs: fast, attested, but require trust in hardware vendor and side-channel mitigations.</li>
+          <li>FHE: strong cryptographic guarantees, post-quantum friendly, but currently heavy on compute/time.</li>
+          <li>MPC: distributes trust, requires honest-majority or collusion-resistance economics.</li>
+          <li>Verification: attestation + ZK proofs can establish confidential compute was done correctly.</li>
+          <li>Threats: side-channel attacks, collusion, high latency/cost, faulty attestation chains.</li>
+          <li>Mitigations: layered proofs, redundancy, economic incentives, careful key-management and rotation.</li>
+          <li>Compliance: selective disclosure patterns and audit roles for AML/KYC.</li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph6.png" alt="Graph 6">
+  </div>
+      </div>
+
+      <div class="section" id="use-cases">
+        <h2>Use cases (short + developer notes)</h2>
+        <p class="highlight-text">A compact map of real-world problems Inco unlocks, from private paychecks to private onchain games — with quick notes about which tech often fits best.</p>
+        <ul>
+          <li>Consumer & Payments: confidential payroll, P2P payments, streaming payments. (Lightning preferred for low-latency payroll apps.)</li>
+          <li>Trading & TradFi: confidential RWAs, interbank settlement, private trading volumes. (Atlas useful when regulators need cryptographic proofs.)</li>
+          <li>Gaming & NFTs: poker, fog-of-war, hidden NFT attributes and reveals. (Lightning for fast gameplay.)</li>
+          <li>DeFi & Governance: private AMMs, blind auctions, confidential DAO voting. (Hybrid approaches often ideal.)</li>
+          <li>Identity & Healthcare: selective disclosure, encrypted credentials, medical analytics with FHE. (Atlas & MPC shine here.)</li>
+          <li>Supply chain & Storage: encrypt sensitive metadata, program access controls for offchain content. (Combine onchain encrypted keys + offchain storage.)</li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph7.png" alt="Graph 7">
+  </div>
+      </div>
+
+      
+      <div class="section" id="privacy-levels">
+        <h2>The four levels of blockchain privacy</h2>
+        <p class="highlight-text">For builders: Choose the level per use case. Confidentiality (Inco’s sweet spot) balances composability and compliance better than total anonymity.</p>
+        <ul>
+          <li>Transparency — everyone sees everything.</li>
+          <li>Anonymity — amounts visible, identities hidden.</li>
+          <li>Confidentiality — identity visible, amounts hidden (Inco focuses here).</li>
+          <li>Total privacy — nothing visible (privacy chains like Monero).</li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph8.png" alt="Graph 8">
+  </div>
+      </div>
+
+      
+      <div class="section" id="comparison">
+        <h2>TEE vs FHE (short comparison)</h2>
+        <p class="highlight-text">Quick side-by-side of the two headline approaches so you can pick based on speed, trust, verifiability and future-proofing.</p>
+        <ul>
+          <li>TEEs = fast, trust hardware. FHE = mathematically private, trust math + compute cost.</li>
+          <li>Performance: TEE >> FHE (today).</li>
+          <li>Trust model: TEE trusts hardware vendor; FHE trusts crypto assumptions (lattice/LWE).</li>
+          <li>Verifiability: TEEs use attestation; FHE can use deterministic checks and ZK add-ons.</li>
+          <li>Quantum: FHE (lattice-based) is more future-proof.</li>
+        </ul>
+        <div class="section-images">
+    <img src="media/graph9.png" alt="Graph 9">
+  </div>
+      </div>
+
+      
+      <div class="section" id="practical-guide">
+        <h2>Practical guide for builders (step-by-step + checklist)</h2>
+        <p class="highlight-text">A compact playbook. Take this checklist to go from concept to a live confidential feature on Inco testnet.</p>
+        <ul>
+          <li>Choose the privacy level & product (Lightning or Atlas).</li>
+          <li>Prototype: create a minimal Solidity contract using Inco encrypted types.</li>
+          <li>Local test: run unit tests with Inco test harness/emulator.</li>
+          <li>Deploy to Base Sepolia (Lightning beta).</li>
+          <li>Integrate front-end: users sign transactions with MetaMask; Inco SDK handles encryption/attestation.</li>
+          <li>Add selective disclosure: grant viewer keys or audit roles.</li>
+          <li>Security review: threat modeling, attestation verification, test for side-channels and collusion.</li>
+          <li>Performance testing: measure latency/cost; iterate on TEE/FHE hybrid choices.</li>
+          <li>Hybridization: put ultra-low-latency ops in Lightning, heavy analytic ops in Atlas later.</li>
+          <li>Keep public logic onchain; confidential logic offloaded to Inco nodes/TEE/FHE.</li>
+          <li>Governance & audit hooks: encrypted audit logs, role-based decryptors for regulators.</li>
+          <li>UX: make decryption/permissioning frictionless (one-click authorize for auditors).</li>
+        </ul>
+      </div>
+
+      
+      <div class="section" id="glossary">
+        <h2>Glossary (simple definitions)</h2>
+        <p class="highlight-text">Quick, snackable definitions you can memorize and use in docs or slides.</p>
+        <ul>
+          <li>TEE: a locked room inside a CPU.</li>
+          <li>FHE: math that lets you work on locked boxes.</li>
+          <li>MPC: many people compute together without sharing secrets.</li>
+          <li>ZKP: show you’re telling the truth without showing the secret.</li>
+          <li>cERC20: an ERC20 token that hides amounts.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      midas - made with love 💙 | you can reach me here 
+      <a href="https://twitter.com/wjmdiary" target="_blank" class="twitter-link">
+        <img src="media/x-logo.png" alt="X Logo">
+      </a>
+    </p>
+  </footer>
+</body>
+</html>
